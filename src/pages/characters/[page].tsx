@@ -9,6 +9,7 @@ import {
     ArrowLongLeftIcon,
     ArrowLongRightIcon,
 } from '@heroicons/react/20/solid'
+import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 type PageInfo = {
     count: number
@@ -45,7 +46,7 @@ type CharactersProps = {
 }
 
 export default function Characters(props: CharactersProps) {
-    const { characters, info, page } = props
+    const { characters, page } = props
 
     const router = useRouter()
     const { status, data } = useQuery({
@@ -56,8 +57,9 @@ export default function Characters(props: CharactersProps) {
             ),
         initialData: props.characters,
     })
-    if (status === 'loading') return <p>loading...</p>
-    if (status === 'error') return <p>Error:</p>
+    // if (status === 'loading'){
+    //     return <p>loading...</p>
+    // }else if (status === 'error') return <p>Error:</p>
 
     return (
         <div className="flex flex-col">
@@ -90,38 +92,24 @@ export default function Characters(props: CharactersProps) {
                                 <dt className="sr-only">Species</dt>
                                 <dd className="mt-3">
                                     <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                        {person.species}
+                                        Origin: {person.origin.name}
                                     </span>
                                 </dd>
                             </dl>
                         </div>
                         <div>
-                            {/* <div className="-mt-px flex divide-x divide-gray-200">
+                            <div className="-mt-px flex divide-x divide-gray-200">
                                 <div className="flex w-0 flex-1">
-                                    <a
-                                        href={`mailto:${person.email}`}
-                                        className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
-                                    >
-                                        <EnvelopeIcon
-                                            className="h-5 w-5 text-gray-400"
-                                            aria-hidden="true"
-                                        />
-                                        Email
-                                    </a>
+                                    <p className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                                        {person.species}
+                                    </p>
                                 </div>
                                 <div className="-ml-px flex w-0 flex-1">
-                                    <a
-                                        href={`tel:${person.telephone}`}
-                                        className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
-                                    >
-                                        <PhoneIcon
-                                            className="h-5 w-5 text-gray-400"
-                                            aria-hidden="true"
-                                        />
-                                        Call
-                                    </a>
+                                    <p className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                                        {person.status}
+                                    </p>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </li>
                 ))}
