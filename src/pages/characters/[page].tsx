@@ -49,14 +49,14 @@ export default function Characters(props: CharactersProps) {
     const { characters, page } = props
 
     const router = useRouter()
-    const { status, data } = useQuery({
-        queryKey: ['characters'],
-        queryFn: () =>
-            fetcher(
-                `https://rickandmortyapi.com/api/character/?page=${router.query.page}`
-            ),
-        initialData: props.characters,
-    })
+    // const { status, data } = useQuery({
+    //     queryKey: ['characters'],
+    //     queryFn: () =>
+    //         fetcher(
+    //             `https://rickandmortyapi.com/api/character/?page=${router.query.page}`
+    //         ),
+    //     initialData: props.characters,
+    // })
     // if (status === 'loading'){
     //     return <p>loading...</p>
     // }else if (status === 'error') return <p>Error:</p>
@@ -163,7 +163,7 @@ type CharacterPageParams = {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    const { page } = params as CharacterPageParams // assert that params is of type CharacterPageParams
+    const { page } = params as CharacterPageParams
     const charactersResponse = await fetcher(
         `https://rickandmortyapi.com/api/character/?page=${page}`
     )
