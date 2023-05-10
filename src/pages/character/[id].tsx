@@ -3,6 +3,7 @@ import { fetcher } from '../../utils/fetch'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Episode from '../../components/Episode'
+import Location from '../../components/Location'
 type Character = {
     id: number
     name: string
@@ -36,7 +37,8 @@ export default function Character(props: CharactersProps) {
         queryFn: () =>
             fetcher(`https://rickandmortyapi.com/api/character/${id}`),
     })
-
+    const locationUrlPars = data.location.url.split('/').filter(Boolean)
+    const locationId = locationUrlPars[locationUrlPars.length - 1]
     if (status === 'loading')
         return (
             <p className="flex flex-col min-h-screen items-center justify-center">
@@ -96,7 +98,7 @@ export default function Character(props: CharactersProps) {
                                 Location
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {data.location.name}
+                                <Location id={locationId} />
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
