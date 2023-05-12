@@ -37,8 +37,7 @@ export default function Character(props: CharactersProps) {
         queryFn: () =>
             fetcher(`https://rickandmortyapi.com/api/character/${id}`),
     })
-    const locationUrlPars = data.location.url.split('/').filter(Boolean)
-    const locationId = locationUrlPars[locationUrlPars.length - 1]
+
     if (status === 'loading')
         return (
             <p className="flex flex-col min-h-screen items-center justify-center">
@@ -46,6 +45,9 @@ export default function Character(props: CharactersProps) {
             </p>
         )
     if (status === 'error') return <p>Error :</p>
+
+    const locationUrlPars = data.location.url.split('/').filter(Boolean)
+    const locationId = locationUrlPars[locationUrlPars.length - 1]
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center">
