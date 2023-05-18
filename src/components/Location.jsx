@@ -13,7 +13,7 @@ function Location({ id }) {
 
     return (
         <>
-            {data.name} --- {data.type}
+            {data.name}: {data.type}
         </>
     )
 }
