@@ -6,8 +6,13 @@ export default function Episode() {
     const id = router.query.id
     const { status, data } = useQuery({
         queryKey: ['episode', id],
-        queryFn: () =>
-            fetcher(`https://rickandmortyapi.com/api/character/${id}`),
+        queryFn: () => fetcher(`https://rickandmortyapi.com/api/episode/${id}`),
     })
-    return <div className="min-h-screen">Episode</div>
+    return (
+        <div className="min-h-screen">
+            <div>
+                <h2 className="text-2xl">{data.name}</h2>
+            </div>
+        </div>
+    )
 }
