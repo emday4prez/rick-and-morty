@@ -13,7 +13,7 @@ function Episode({ id }) {
 
     return (
         <article key={id}>
-            <Link href={`/episodes/${id}`}>
+            <Link href={`/episode/${id}`}>
                 <h4>
                     {data.episode}. {data.name} - {data.air_date}
                 </h4>
