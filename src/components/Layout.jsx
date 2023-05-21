@@ -46,7 +46,7 @@ export default function Layout({ children }) {
                             </a>
                         ))}
                     </div>
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <div className="hidden lg:flex lg:flex-1 text-slate-100 lg:justify-end">
                         RM
                     </div>
                 </nav>
