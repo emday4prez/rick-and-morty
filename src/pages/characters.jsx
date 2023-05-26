@@ -26,7 +26,7 @@ function Characters() {
         },
     })
     return status === 'pending' ? (
-        <p className="min-h-screen">Loading...</p>
+        <p className="min-h-screen">Loading Characters...</p>
     ) : status === 'error' ? (
         <p>Error: {error.message}</p>
     ) : (
