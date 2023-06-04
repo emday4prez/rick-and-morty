@@ -18,7 +18,6 @@ export default function Season({ episodes, season }: any) {
 
 export async function getServerSideProps({ params }: any) {
     const { season } = params
-    console.log(season)
     const seasonResponse = await fetcher(
         `https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9,10,11`
     )
